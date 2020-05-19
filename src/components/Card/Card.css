@@ -1,0 +1,32 @@
+.container {
+    display: block;
+    padding-bottom: 10px;
+    background-color: #f1f1f1;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin: 0 100px;
+    border-radius: 15px;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    margin: 0 80px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background-color: #838383;
+    display: inline-block;
+    border: 5px solid #aaa9a9;
+}
+
+.title {
+    font-size: 30px;
+}
+
+.content {
+    margin-top: 30px;
+}
+
+.isi {
+    margin: 3px 0;
+}

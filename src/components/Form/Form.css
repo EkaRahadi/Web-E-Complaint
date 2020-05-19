@@ -1,0 +1,54 @@
+.form-add-keluhan {
+    background-color: #f1f1f1;
+    width: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin: 10px 0 0 15px;
+}
+
+form {
+    padding-bottom: 20px;
+}
+label {
+    color: #7c7c7c;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0 20px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0 20px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0 20px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    background-color: #696969;
+    width: 80px;
+    height: 35px;
+    border-radius: 5px;
+    display: block;
+    color: white;
+    border-style: none;
+    margin: 0 auto;
+}

@@ -1,0 +1,62 @@
+.navbar {
+    position: relative;
+    background-color: #bfbfbfb1;
+    height: 85px;
+}
+
+.navbar-info {
+    height: 85px;
+}
+
+img {
+    width: 90px;
+    height: 90px;
+    box-sizing: border-box;
+}
+
+h2 {
+    display: inline-block;
+    font-size: 15px;
+    margin: 10px 0 0 5px;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+    position: absolute;
+    border-bottom: 2px solid #bfbfbf;
+}
+
+.slogan {
+    position: absolute;
+    top: 40px;
+    left:125px;
+    font-size: 15px;
+    display: inline-block;
+    margin: 0 0;
+    box-sizing: border-box;
+}
+
+.navbar-menu {
+    overflow: hidden;
+    position: absolute;
+    right: 40px;
+    top:35px;
+    /* background-color: #ffffff; */
+  }
+  
+  .navbar-menu a {
+    float: left;
+    color: #000;
+    text-align: center;
+    padding: 13px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .navbar-menu a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .navbar-menu a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
