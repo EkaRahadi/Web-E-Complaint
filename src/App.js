@@ -48,7 +48,7 @@ const App = () => {
     let newData = []
     
     const apiRequest = async () => {
-      await fetch('https://backend-complaint.herokuapp.com/api-mobile/banyak-complaint/', {
+      await fetch('https://api.elbaayu.xyz/api-mobile/banyak-complaint/', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -102,7 +102,7 @@ const App = () => {
 const complaint = (data) => {
   return new Promise(async (resolve, reject) => {
 
-    await fetch('https://backend-complaint.herokuapp.com/api-mobile/complaint-create/', {
+    await fetch('https://api.elbaayu.xyz/api-mobile/complaint-create/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -140,7 +140,7 @@ const complaint = (data) => {
 
 const rawComplaint = (data) => {
   return new Promise(async (resolve, reject) => {
-    await fetch('https://backend-complaint.herokuapp.com/api-web/complaint/', {
+    await fetch('https://api.elbaayu.xyz/api-web/complaint/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
