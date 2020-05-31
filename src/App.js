@@ -5,6 +5,7 @@ import Card from './components/Card/Card';
 import Form from './components/Form/Form';
 import NavBar from './components/NavBar/NavBar';
 import PieChart from './components/PieChart/PieChart';
+import Diagram from './components/Diagram/Diagram';
 import {Progress} from 'antd';
 import { Modal} from 'antd';
 import {
@@ -233,7 +234,7 @@ const rawComplaint = (data) => {
               <PieChart dataChart={dataChart}/>
           </Route>
           <Route path="/diagram">
-            {/* Diagram Alir */}
+            <Diagram/>
           </Route>
           <Route path="*">
             <NoMatch/>

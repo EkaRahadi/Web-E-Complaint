@@ -1,0 +1,13 @@
+.contaier-img {
+    background-color: #D3D3D3;
+    height: 50%;
+    width: 50%;
+    margin: 0px auto;
+    padding: 0.5rem 0;
+}
+.flowchart {
+    height: 60%;
+    width: 60%;
+    display: block;
+    margin: 0 auto
+}
