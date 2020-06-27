@@ -40,7 +40,8 @@ const App = () => {
   const [data, setData] = useState({
     nim : '',
     email: '',
-    keluhan: ''
+    keluhan: '',
+    image: null
   })
 
   useEffect( () =>{
@@ -94,23 +95,34 @@ const App = () => {
   }
 
   const handleChange = (event) => {
-    setData({
+    if (event.target.name === 'image') {
+      setData({
+        ...data,
+        [event.target.name] : event.target.files[0]
+      })
+    }
+    else {
+      setData({
         ...data,
         [event.target.name] : event.target.value
-    })
+      })
+    }
 }
 
 const complaint = (data) => {
+  let formData = new FormData();
+  formData.append('keluhan', data.keluhan);
+  formData.append('nim', data.nim)
+  formData.append('email', data.email)
+
+  if (data.image !== null) {
+    formData.append('image', data.image)
+  }
   return new Promise(async (resolve, reject) => {
 
     await fetch('https://api.elbaayu.xyz/api-mobile/complaint-create/', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "keluhan" : data.keluhan
-      })
+      body: formData
     })
     .then(res => res.json())
     .then(data => {
@@ -146,7 +158,11 @@ const rawComplaint = (data) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify({
+        "keluhan" : data.keluhan,
+        "nim": data.nim,
+        "email": data.email
+      })
     })
     .then(res => res.json())
     .then(data => {
@@ -215,7 +231,6 @@ const rawComplaint = (data) => {
   else {
     return (
       <Fragment>
-        {console.log(dataChart)}
         <NavBar/>
         {location.pathname === '/' && <Header name={'Home'}/>}
         {location.pathname === '/keluhan' && <Header name={'Form Keluhan'}/>}

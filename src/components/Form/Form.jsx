@@ -39,11 +39,17 @@ const Form = (props) => {
           <textarea
             name="keluhan"
             id="body-keluhan"
-            cols="30"
-            rows="10"
+            cols="20"
+            rows="5"
             onChange={handleChange}
             required
           ></textarea>
+
+          <label htmlFor="image">Pilih Gambar : </label>
+          <input type="file"
+            id="image" name="image"
+            onChange={handleChange}
+            accept="image/png, image/jpeg"/>
 
           <input type="submit" value="Kirim" />
         </form>
