@@ -6,6 +6,7 @@ import Form from './components/Form/Form';
 import NavBar from './components/NavBar/NavBar';
 import PieChart from './components/PieChart/PieChart';
 import Diagram from './components/Diagram/Diagram';
+import TableComp from './components/Table/Table';
 import {Progress} from 'antd';
 import { Modal} from 'antd';
 import {
@@ -236,6 +237,7 @@ const rawComplaint = (data) => {
         {location.pathname === '/keluhan' && <Header name={'Form Keluhan'}/>}
         {location.pathname === '/statistik' && <Header name={'Statistik'}/>}
         {location.pathname === '/diagram' && <Header name={'Diagram Alir'}/>}
+        {location.pathname === '/daftar-keluhan' && <Header name={'Daftar Keluhan'}/>}
 
         {/* Route */}
         <Switch>
@@ -246,10 +248,13 @@ const rawComplaint = (data) => {
             <Form onButtonClick={onButtonClick} handleFormChange={handleChange}/>
           </Route>
           <Route path="/statistik">
-              <PieChart dataChart={dataChart}/>
+            <PieChart dataChart={dataChart}/>
           </Route>
           <Route path="/diagram">
             <Diagram/>
+          </Route>
+          <Route path="/daftar-keluhan">
+            <TableComp/>
           </Route>
           <Route path="*">
             <NoMatch/>
