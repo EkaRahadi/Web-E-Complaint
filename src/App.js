@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import './App.css';
+// import './App.css';
 import Header from './components/Header/Header';
 import Card from './components/Card/Card';
 import Form from './components/Form/Form';

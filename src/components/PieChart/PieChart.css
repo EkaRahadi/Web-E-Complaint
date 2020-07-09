@@ -3,3 +3,7 @@
     height: 40%;
     width: 70%;
 }
+
+.center-row {
+    justify-content: center;
+}

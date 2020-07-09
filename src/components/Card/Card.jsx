@@ -1,11 +1,13 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container'
 import './Card.css';
 // import Circle from '../Circle/Circle';
 
 const Card = () => {
 
     return (
-        <div className="container">
+        // <div className="container">
+        <Container>
             <p className="title">Selamat Datang di E-Complaint Politeknik Negeri Indramayu</p>
             <div className="circle"></div>
             <div className="circle"></div>
@@ -22,7 +24,8 @@ const Card = () => {
                 <p className="isi">deteksi dini terhadap kelemahan sistem ataupun penyimpangan</p> 
                 <p className="isi">pelaksanaan manual mutu.</p>
             </div>
-        </div>
+        {/* </div> */}
+        </Container>
     )
 }
 
