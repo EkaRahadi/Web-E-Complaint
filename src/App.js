@@ -117,7 +117,7 @@ const complaint = (data) => {
   formData.append('email', data.email)
 
   if (data.image !== null) {
-    formData.append('image', data.image)
+    formData.append('path', data.image)
   }
   return new Promise(async (resolve, reject) => {
 
