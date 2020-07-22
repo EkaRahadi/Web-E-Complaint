@@ -1,5 +1,6 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 // import './App.css';
+import { Progress } from 'antd';
 import Header from './components/Header/Header';
 import Card from './components/Card/Card';
 import Form from './components/Form/Form';
@@ -7,8 +8,6 @@ import NavBar from './components/NavBar/NavBar';
 import PieChart from './components/PieChart/PieChart';
 import Diagram from './components/Diagram/Diagram';
 import TableComp from './components/Table/Table';
-import {Progress} from 'antd';
-import { Modal} from 'antd';
 import {
   Switch,
   Route,
@@ -19,7 +18,7 @@ import NoMatch from './pages/NoMatch/NoMatch';
 const App = () => {
   let location = useLocation();
 
-  //State
+  // State
   const [dataChart, setDataChart] = useState({
     labels: [],
     datasets: [
@@ -36,16 +35,10 @@ const App = () => {
     ]
 })
   const [loading, setLoading] = useState(true);
-  const [visible, setVisible] = useState(false);
-  const [confirmLoading, setConfirmLoading] = useState(false);
-  const [data, setData] = useState({
-    nim : '',
-    email: '',
-    keluhan: '',
-    image: null
-  })
+
 
   useEffect( () =>{
+    console.log(loading);
 
     let newLabel = []
     let newData = []
@@ -86,140 +79,7 @@ const App = () => {
         ]
     })
     setLoading(false);
-  },[])
-
-  //Fungsi yg akan dikirim sebagai props ke component Form
-  const onButtonClick = () => {
-    if (data.nim !== '' || data.email !== '' || data.keluhan !== '') {
-      setVisible(true);
-    }
-  }
-
-  const handleChange = (event) => {
-    if (event.target.name === 'image') {
-      setData({
-        ...data,
-        [event.target.name] : event.target.files[0]
-      })
-    }
-    else {
-      setData({
-        ...data,
-        [event.target.name] : event.target.value
-      })
-    }
-}
-
-const complaint = (data) => {
-  let formData = new FormData();
-  formData.append('keluhan', data.keluhan);
-  formData.append('nim', data.nim)
-  formData.append('email', data.email)
-
-  if (data.image !== null) {
-    formData.append('path', data.image)
-  }
-  return new Promise(async (resolve, reject) => {
-
-    await fetch('https://api.elbaayu.xyz/api-mobile/complaint-create/', {
-      method: 'POST',
-      body: formData
-    })
-    .then(res => res.json())
-    .then(data => {
-      //do here
-      console.log(data);
-      if (data.success === true) {
-        resolve(data)
-        // setConfirmLoading(false);
-        // setVisible(false);
-        // //Show modal success
-        // success();
-
-      }
-      else {
-        reject('error')
-        // setVisible(false);
-        // setConfirmLoading(false);
-        // //Show modal error
-        // error();
-      }
-    })
-    .catch(err => {
-      console.log(err)
-      reject(err)
-    })
-  })
-} // raw complaint
-
-const rawComplaint = (data) => {
-  return new Promise(async (resolve, reject) => {
-    await fetch('https://api.elbaayu.xyz/api-web/complaint/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "keluhan" : data.keluhan,
-        "nim": data.nim,
-        "email": data.email
-      })
-    })
-    .then(res => res.json())
-    .then(data => {
-      //do here
-      // console.log(data);
-      if (data.success === true) {
-        resolve(data)
-      }
-      else {
-        reject('error')
-      }
-    })
-    .catch(err => {
-      reject(err)
-    })
-  })
-}
-
-  //Function Modal
-
-  const handleOk = async () => {
-    setConfirmLoading(true);
-
-    Promise.all([rawComplaint(data), complaint(data)])
-    .then(response => {
-      console.log(response);
-      setConfirmLoading(false);
-      setVisible(false);
-      //Show modal success
-      success();
-    })
-    .catch(err => {
-      console.log(err)
-      setVisible(false);
-      setConfirmLoading(false);
-      //Show modal error
-      error();
-    })
-  }
-
-  const success = () => {
-    Modal.success({
-      content: 'Berhasil',
-    });
-  }
-
-  const error = () => {
-    Modal.error({
-      title: 'Error',
-      content: 'Tidak dapat mengirim keluhan',
-    });
-  }
-
-  const handleCancel = () => {
-    setVisible(false);
-  }
+  }, []);
 
   if (loading===true) {
     return (
@@ -228,8 +88,7 @@ const rawComplaint = (data) => {
         <p>Please Wait . . .</p>
       </div>
     );
-  }
-  else {
+  } else {
     return (
       <Fragment>
         <NavBar/>
@@ -245,7 +104,7 @@ const rawComplaint = (data) => {
             <Card/>
           </Route>
           <Route path="/keluhan">
-            <Form onButtonClick={onButtonClick} handleFormChange={handleChange}/>
+            <Form/>
           </Route>
           <Route path="/statistik">
             <PieChart dataChart={dataChart}/>
@@ -262,21 +121,11 @@ const rawComplaint = (data) => {
 
         </Switch>
 
-        {/* Modal */}
-        <div>
-          <Modal
-            title="Keluhan"
-            visible={visible}
-            onOk={handleOk}
-            confirmLoading={confirmLoading}
-            onCancel={handleCancel}
-          >
-            <p>Keluhan anda akan dikirim kepihak terkait</p>
-          </Modal>
-        </div>
       </Fragment>
   );
+
   }
+
 }
 
 export default App;

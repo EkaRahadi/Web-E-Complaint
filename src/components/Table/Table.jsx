@@ -1,5 +1,6 @@
 import React , { Component }from 'react';
 import MaterialTable from 'material-table';
+import lodash from 'lodash';
 import './Table.css';
  
 class TableComp extends Component {
@@ -27,7 +28,7 @@ class TableComp extends Component {
             await response.data.map( (item, index) => {
               dataKeluhan.push({
                 no: index+1,
-                keluhan: item.keluhan,
+                keluhan: lodash.upperFirst(lodash.trim(item.keluhan, [',', '.'])),
                 kategori: item.kategori.kategori,
                 status: item.status.status
               })

@@ -18,6 +18,12 @@
     right: 1.5rem;
 }
 
+#jurusan {
+    display: block;
+    margin-bottom: 10px;
+    width: 300px;
+}
+
 form {
     padding-bottom: 20px;
 }
