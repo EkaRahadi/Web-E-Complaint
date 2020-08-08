@@ -96,7 +96,7 @@ const App = () => {
         {location.pathname === '/keluhan' && <Header name={'Form Keluhan'}/>}
         {location.pathname === '/statistik' && <Header name={'Statistik'}/>}
         {location.pathname === '/diagram' && <Header name={'Diagram Alir'}/>}
-        {location.pathname === '/daftar-keluhan' && <Header name={'Daftar Keluhan'}/>}
+        {location.pathname === '/daftar-keluhan' && <Header name={'Rekap Tanggapan'}/>}
 
         {/* Route */}
         <Switch>

@@ -60,7 +60,7 @@ class TableComp extends Component {
     render() {
         return(
         <MaterialTable
-          title="Keluhan"
+          title="Rekap Tanggapan"
           isLoading={this.state.isLoading}
           columns={this.column}
           data={this.state.data}        

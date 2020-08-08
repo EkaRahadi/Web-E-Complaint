@@ -42,7 +42,7 @@ const NavBar = () => {
                         <Link className="link-menu" to="/statistik">Statistik</Link>
                     </Nav.Link>
                     <Nav.Link>
-                        <Link className="link-menu" to="/daftar-keluhan">Daftar Keluhan</Link>
+                        <Link className="link-menu" to="/daftar-keluhan">Rekap Tanggapan</Link>
                     </Nav.Link>
                     <Nav.Link>
                         <Link className="link-menu" to="/diagram">Diagram Alir Keluhan</Link>
