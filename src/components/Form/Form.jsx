@@ -17,13 +17,8 @@ const Form = (props) => {
     image: null
   })
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   props.onButtonClick();
-  //   event.target.reset();
-  // };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(data.jurusan);
     if (data.nim !== '' && data.email !== '' && data.keluhan !== '' && data.jurusan !== '' && data.jurusan !== 'default') {
@@ -34,7 +29,8 @@ const Form = (props) => {
         content: 'Mohon isi semua bidang !',
       });
     }
-    event.target.reset();
+    await event.target.reset();
+    console.log(event);
   }
 
   const handleChange = (event) => {
@@ -56,6 +52,13 @@ const success = () => {
   Modal.success({
     content: 'Berhasil',
   });
+  setData({
+    nim : '',
+    email: '',
+    keluhan: '',
+    jurusan: 'default',
+    image: null
+  })
 }
 
 const error = () => {
@@ -63,6 +66,13 @@ const error = () => {
     title: 'Error',
     content: 'Tidak dapat mengirim keluhan',
   });
+  setData({
+    nim : '',
+    email: '',
+    keluhan: '',
+    jurusan: 'default',
+    image: null
+  })
 }
 
 const handleCancel = () => {
@@ -195,6 +205,7 @@ const handleOk = async () => {
 
             <label htmlFor="image">Pilih Gambar : </label>
             <input type="file"
+              className="tes-img"
               id="image" name="image"
               onChange={handleChange}
               accept="image/png, image/jpeg"/>
